@@ -1,0 +1,12 @@
+version: '3'
+services:
+  my-database:
+    image: mongo:4.4.4
+    environment:
+      - MONGO_INITDB_DATABASE=smartgrow
+      - MONGO_INITDB_ROOT_USERNAME=smartgrow
+      - MONGO_INITDB_ROOT_PASSWORD=smartgrow1234
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./mongo_data:/data/db
