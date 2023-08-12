@@ -8,7 +8,13 @@ import { WebsocketModule } from './websocket/websocket.module';
 import { DatabaseModule } from './database/database.module';
 
 @Module({
-  imports: [SensoresModule, ActuadoresModule, MqttModule, WebsocketModule, DatabaseModule],
+  imports: [
+    SensoresModule,
+    ActuadoresModule,
+    MqttModule,
+    WebsocketModule,
+    DatabaseModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
