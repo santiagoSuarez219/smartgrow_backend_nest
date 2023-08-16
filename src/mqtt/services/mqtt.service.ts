@@ -1,23 +1,20 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { connect } from 'mqtt';
-// import { SensoresService } from '../sensores/services/sensores.service';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class MqttService {
   private logger = new Logger(MqttService.name);
   private cliente;
 
-  // constructor(private readonly sensoresService: SensoresService) {
-  //   this.connect();
-  // }
-
-  constructor() {
+  constructor(private readonly configService: ConfigService) {
     this.connect();
   }
 
   private connect(): void {
-    const host = 'localhost';
-    const port = 1883;
+    // const host = 'localhost';
+    const host = this.configService.get('MQTT_HOST');
+    const port = this.configService.get('MQTT_PORT');
     const brokerUrl = `mqtt://${host}:${port}`;
     this.cliente = connect(brokerUrl);
 
