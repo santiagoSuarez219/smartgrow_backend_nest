@@ -16,9 +16,6 @@ export class Scd40 extends Document {
   fecha: Date;
 
   @Prop({ required: true })
-  hora: string;
-
-  @Prop({ required: true })
   tipo: string;
 }
 

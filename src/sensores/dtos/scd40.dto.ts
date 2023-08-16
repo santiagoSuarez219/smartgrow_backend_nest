@@ -1,7 +1,7 @@
-import { IsNotEmpty, IsString, IsNumber, IsDate } from 'class-validator';
+import { IsNotEmpty, IsString, IsNumber } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
-export class CreateDataScd40Dto{
+export class CreateDocumentScd40Dto {
   @ApiProperty()
   @IsNotEmpty()
   @IsNumber()
@@ -16,16 +16,6 @@ export class CreateDataScd40Dto{
   @IsNotEmpty()
   @IsNumber()
   readonly humedad: number;
-
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsDate()
-  readonly fecha: Date;
-
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
-  readonly hora: string;
 
   @ApiProperty()
   @IsNotEmpty()
