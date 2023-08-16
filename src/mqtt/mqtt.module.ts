@@ -1,6 +1,7 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { MqttService } from './services/mqtt.service';
 
+@Global()
 @Module({
   providers: [MqttService],
   exports: [MqttService],
