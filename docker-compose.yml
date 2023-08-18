@@ -1,16 +1,16 @@
 version: '3'
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - '3000:3000'
-    volumes:
-      - .:/app
-    depends_on:
-      - my-database
-    command: npm run start:dev
+  # app:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - '3000:3000'
+  #   volumes:
+  #     - .:/app
+  #   depends_on:
+  #     - my-database
+  #   command: npm run start:dev
   my-database:
     image: mongo:4.4.4
     environment:
@@ -21,3 +21,34 @@ services:
       - '27017:27017'
     volumes:
       - ./mongo_data:/data/db
+  emqx:
+    user: root
+    image: "emqx:latest"
+    ports:
+        - "18083:18083"
+        - "1883:1883"
+        - "4369:4369"
+    volumes:
+        - ./data/emqx/data:/opt/emqx/data
+        - ./data/emqx/log:/opt/emqx/log
+    environment:
+        EMQX_LOADED_PLUGINS: emqx_auth_username emqx_auth_clientid
+        EMQX_ADMIN_USERNAME: admin
+        EMQX_ADMIN_PASSWORD: abcd1234
+  influxdb:
+      user: root
+      image: "influxdb:latest"
+      restart: unless-stopped
+      ports:
+         - "8086:8086"
+      volumes:
+         - ./data/influxdb/data:/var/lib/influxdb2
+         - ./data/influxdb/config/:/etc/influxdb2
+      environment:
+         - DOCKER_INFLUXDB_INIT_MODE=setup
+         - DOCKER_INFLUXDB_INIT_USERNAME=smartgrow
+         - DOCKER_INFLUXDB_INIT_PASSWORD=abcd1234
+         - DOCKER_INFLUXDB_INIT_BUCKET=smartdata
+         - DOCKER_INFLUXDB_INIT_ORG=smartgrow
+         - DOCKER_INFLUXDB_INIT_RETENTION=1w
+         - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=ldU82bQr-ukNd_n8nCa-cJCbIAx6VV7Aii0hH3FywyoPP99GoHtArX02D11MrRD1aK3E0l2VnV5CneJ3_pE-Cg==
