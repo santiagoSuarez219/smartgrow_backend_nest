@@ -10,5 +10,16 @@ export default registerAs('config', () => {
       host: process.env.MONGO_HOST,
       connection: process.env.MONGO_CONNECTION,
     },
+    influxdb: {
+      host: process.env.INFLUXDB_HOST,
+      port: parseInt(process.env.INFLUXDB_PORT, 10),
+      token: process.env.INFLUXDB_TOKEN,
+      org: process.env.INFLUXDB_ORG,
+      bucket: process.env.INFLUXDB_BUCKET,
+    },
+    mqtt: {
+      host: process.env.MQTT_HOST,
+      port: parseInt(process.env.MQTT_PORT, 10),
+    },
   };
 });
