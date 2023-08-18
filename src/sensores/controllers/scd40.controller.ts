@@ -11,12 +11,16 @@ import {
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 
 import { Scd40Service } from '../services/scd40.service';
+import { InfluxdbService } from '../../influxdb/services/influxdb.service';
 import { CreateDocumentScd40Dto } from '../dtos/scd40.dto';
 
 @ApiTags('scd40')
 @Controller('scd40')
 export class Scd40Controller {
-  constructor(private scd40Service: Scd40Service) {}
+  constructor(
+    private scd40Service: Scd40Service,
+    private influxService: InfluxdbService,
+  ) {}
 
   @ApiOperation({ summary: 'List of all data scd40' })
   @Get()
