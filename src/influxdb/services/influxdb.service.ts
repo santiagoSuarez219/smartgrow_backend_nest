@@ -1,6 +1,8 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
 import { InfluxDB, QueryApi, Point, flux } from '@influxdata/influxdb-client';
 import { ConfigType } from '@nestjs/config';
+import { PointSCD40 } from '../influx.points';
+import { queries } from '../influx.querys';
 
 import config from '../../config';
 
@@ -30,28 +32,26 @@ export class InfluxdbService {
     this.logger.log('Conectado InfluxDB');
   }
 
-  async create_data(collection: string, typedata: string, value: number) {
+  async create_data(collection: string, data: any) {
     const writeApi = this.client.getWriteApi(this.org, this.bucket);
-    const point = new Point(collection)
-      .tag('location', 'smargrow')
-      .floatField(typedata, value)
-      .timestamp(new Date());
+    let point: Point;
+    if (collection === 'scd40') {
+      point = PointSCD40(data.co2, data.temperatura, data.humedad);
+    }
     writeApi.writePoint(point);
     writeApi
       .close()
       .then(() => {
-        console.log('FINISHED');
+        return this.logger.log('Dato creado con exito');
       })
       .catch((e) => {
         console.error(e);
-        console.log('Finished ERROR');
+        return this.logger.error('Error al crear dato');
       });
   }
 
   async getData(collection: string) {
-    const query = flux`from(bucket: "${this.bucket}")
-    |> range(start: -1d)
-    |> filter(fn: (r) => r._measurement == "${collection}")`;
+    const query = flux`${queries.getSensorData(this.bucket, collection)}`;
     this.queryApi.queryRows(query, {
       next(row, tableMeta) {
         const o = tableMeta.toObject(row);

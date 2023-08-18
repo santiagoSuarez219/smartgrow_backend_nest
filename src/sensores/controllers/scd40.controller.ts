@@ -40,6 +40,7 @@ export class Scd40Controller {
   @Post()
   @HttpCode(HttpStatus.CREATED)
   create(@Body() payload: CreateDocumentScd40Dto) {
+    this.influxService.create_data('scd40', payload);
     return this.scd40Service.create(payload);
   }
 
