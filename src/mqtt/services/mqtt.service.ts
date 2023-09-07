@@ -46,7 +46,7 @@ export class MqttService {
   }
 
   private handleMessage(topic: string, message: Buffer): void {
-    const payload = JSON.parse(message.toString());
+    const payload = message.toString();
     console.log(payload);
     this.logger.log(`Mensaje recibido en ${topic}`);
   }
