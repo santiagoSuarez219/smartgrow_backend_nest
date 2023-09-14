@@ -10,7 +10,7 @@ export class PhecService {
   constructor(@InjectModel(PhEc.name) private phEcModel: Model<PhEc>) {}
 
   findAll() {
-    return this.phEcModel.find().exec();
+    return this.phEcModel.find().populate('sensor').exec();
   }
 
   async findOne(id: string) {

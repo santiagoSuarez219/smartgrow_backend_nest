@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsMongoId } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateDocumentPhEcDto {
@@ -17,5 +17,8 @@ export class CreateDocumentPhEcDto {
   @IsNumber()
   readonly temperatura: number;
 
-  // Relacion del sensor EC_PH
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsMongoId()
+  readonly sensor: string;
 }
