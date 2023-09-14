@@ -9,7 +9,6 @@ import { DatabaseModule } from './database/database.module';
 
 import { enviroments } from './enviroments';
 import { ConfigModule } from '@nestjs/config';
-import { InfluxdbModule } from './influxdb/influxdb.module';
 import config from './config';
 
 @Module({
@@ -24,7 +23,6 @@ import config from './config';
     MqttModule,
     WebsocketModule,
     DatabaseModule,
-    InfluxdbModule,
   ],
   controllers: [AppController],
   providers: [AppService],
