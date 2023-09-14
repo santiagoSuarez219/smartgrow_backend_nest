@@ -15,8 +15,7 @@ export class Scd40 extends Document {
   @Prop({ required: true })
   fecha: Date;
 
-  @Prop({ required: true })
-  tipo: string;
+  // Crear relacion
 }
 
 export const Scd40Schema = SchemaFactory.createForClass(Scd40);
