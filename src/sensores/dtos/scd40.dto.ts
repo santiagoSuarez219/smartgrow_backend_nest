@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsMongoId } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateDocumentScd40Dto {
@@ -16,4 +16,9 @@ export class CreateDocumentScd40Dto {
   @IsNotEmpty()
   @IsNumber()
   readonly humedad: number;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsMongoId()
+  readonly sensor: string;
 }

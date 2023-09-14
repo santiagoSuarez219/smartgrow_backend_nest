@@ -10,7 +10,7 @@ export class Scd40Service {
   constructor(@InjectModel(Scd40.name) private scd40Model: Model<Scd40>) {}
 
   findAll() {
-    return this.scd40Model.find().exec();
+    return this.scd40Model.find().populate('sensor').exec();
   }
 
   async findOne(id: string) {
