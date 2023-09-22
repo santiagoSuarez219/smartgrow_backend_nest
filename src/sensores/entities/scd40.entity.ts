@@ -1,5 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, Types } from 'mongoose';
+
+import { Sensores } from '../entities/sensores.entity';
 
 @Schema()
 export class Scd40 extends Document {
@@ -15,7 +17,8 @@ export class Scd40 extends Document {
   @Prop({ required: true })
   fecha: Date;
 
-  // Crear relacion
+  @Prop({ type: Types.ObjectId, ref: Sensores.name })
+  sensor: Sensores | Types.ObjectId;
 }
 
 export const Scd40Schema = SchemaFactory.createForClass(Scd40);
