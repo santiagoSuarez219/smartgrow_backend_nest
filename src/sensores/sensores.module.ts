@@ -9,14 +9,19 @@ import { PhecController } from './controllers/phec.controller';
 import { PhecService } from './services/phec.service';
 import { PhEc, PhEcSchema } from './entities/phec.entity';
 
+import { SensoresController } from './controllers/sensores.controller';
+import { SensoresService } from './services/sensores.service';
+import { Sensores, SensoresSchema } from './entities/sensores.entity';
+
 @Module({
   imports: [
     MongooseModule.forFeature([
       { name: Scd40.name, schema: Scd40Schema },
       { name: PhEc.name, schema: PhEcSchema },
+      { name: Sensores.name, schema: SensoresSchema },
     ]),
   ],
-  controllers: [Scd40Controller, PhecController],
-  providers: [Scd40Service, PhecService],
+  controllers: [Scd40Controller, PhecController, SensoresController],
+  providers: [Scd40Service, PhecService, SensoresService],
 })
 export class SensoresModule {}
