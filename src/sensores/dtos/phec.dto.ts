@@ -1,19 +1,21 @@
 import { IsNotEmpty, IsNumber } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
-export class CreateDocumentScd40Dto {
+export class CreateDocumentPhEcDto {
   @ApiProperty()
   @IsNotEmpty()
   @IsNumber()
-  readonly co2: number;
+  readonly ph: number;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsNumber()
+  readonly ec: number;
 
   @ApiProperty()
   @IsNotEmpty()
   @IsNumber()
   readonly temperatura: number;
 
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsNumber()
-  readonly humedad: number;
+  // Relacion del sensor EC_PH
 }

@@ -2,15 +2,15 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
 @Schema()
-export class Scd40 extends Document {
+export class PhEc extends Document {
   @Prop({ required: true })
-  co2: number;
+  ph: number;
+
+  @Prop({ required: true })
+  ec: number;
 
   @Prop({ required: true })
   temperatura: number;
-
-  @Prop({ required: true })
-  humedad: number;
 
   @Prop({ required: true })
   fecha: Date;
@@ -18,4 +18,4 @@ export class Scd40 extends Document {
   // Crear relacion
 }
 
-export const Scd40Schema = SchemaFactory.createForClass(Scd40);
+export const PhEcSchema = SchemaFactory.createForClass(PhEc);
