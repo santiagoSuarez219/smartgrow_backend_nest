@@ -1,23 +1,23 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable, Logger, Inject } from '@nestjs/common';
 import { connect } from 'mqtt';
-// import { SensoresService } from '../sensores/services/sensores.service';
+import { ConfigType } from '@nestjs/config';
+
+import config from '../../config';
 
 @Injectable()
 export class MqttService {
   private logger = new Logger(MqttService.name);
   private cliente;
 
-  // constructor(private readonly sensoresService: SensoresService) {
-  //   this.connect();
-  // }
-
-  constructor() {
+  constructor(
+    @Inject(config.KEY) private configService: ConfigType<typeof config>,
+  ) {
     this.connect();
   }
 
   private connect(): void {
-    const host = 'localhost';
-    const port = 1883;
+    const host = this.configService.mqtt.host;
+    const port = this.configService.mqtt.port;
     const brokerUrl = `mqtt://${host}:${port}`;
     this.cliente = connect(brokerUrl);
 
@@ -46,11 +46,8 @@ export class MqttService {
   }
 
   private handleMessage(topic: string, message: Buffer): void {
-    const payload = JSON.parse(message.toString());
+    const payload = message.toString();
     console.log(payload);
-    // if (topic === 'smartgrow/sensores') {
-    //   this.sensoresService.create(payload.sensor, payload.data);
-    // }
     this.logger.log(`Mensaje recibido en ${topic}`);
   }
 
