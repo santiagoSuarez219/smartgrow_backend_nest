@@ -23,6 +23,7 @@ export class Scd40Service {
 
   create(data: CreateDocumentScd40Dto) {
     const date = new Date();
+    date.setHours(date.getHours() - 5)
     const newDocumentData = {
       ...data,
       fecha: date,
