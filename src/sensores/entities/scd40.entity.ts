@@ -5,14 +5,17 @@ import { Sensores } from '../entities/sensores.entity';
 
 @Schema()
 export class Scd40 extends Document {
-  @Prop({ required: true })
+  @Prop()
   co2: number;
 
-  @Prop({ required: true })
+  @Prop()
   temperatura: number;
 
-  @Prop({ required: true })
+  @Prop()
   humedad: number;
+
+  @Prop()
+  altitud: number;
 
   @Prop({ required: true })
   fecha: Date;
