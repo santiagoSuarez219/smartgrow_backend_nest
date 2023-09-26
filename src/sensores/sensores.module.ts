@@ -13,15 +13,25 @@ import { SensoresController } from './controllers/sensores.controller';
 import { SensoresService } from './services/sensores.service';
 import { Sensores, SensoresSchema } from './entities/sensores.entity';
 
+import { Bme680Controller } from './controllers/bme680.controller';
+import { Bme680Service } from './services/bme680.service';
+import { Bme680, Bme680Schema } from './entities/bme680.entity';
+
 @Module({
   imports: [
     MongooseModule.forFeature([
       { name: Scd40.name, schema: Scd40Schema },
       { name: PhEc.name, schema: PhEcSchema },
       { name: Sensores.name, schema: SensoresSchema },
+      { name: Bme680.name, schema: Bme680Schema },
     ]),
   ],
-  controllers: [Scd40Controller, PhecController, SensoresController],
-  providers: [Scd40Service, PhecService, SensoresService],
+  controllers: [
+    Scd40Controller,
+    PhecController,
+    SensoresController,
+    Bme680Controller,
+  ],
+  providers: [Scd40Service, PhecService, SensoresService, Bme680Service],
 })
 export class SensoresModule {}

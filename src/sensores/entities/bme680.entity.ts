@@ -4,15 +4,15 @@ import { Document, Types } from 'mongoose';
 import { Sensores } from '../entities/sensores.entity';
 
 @Schema()
-export class Scd40 extends Document {
-  @Prop()
-  co2: number;
-
+export class Bme680 extends Document {
   @Prop()
   temperatura: number;
 
   @Prop()
   humedad: number;
+
+  @Prop()
+  altitud: number;
 
   @Prop({ required: true })
   fecha: Date;
@@ -21,4 +21,4 @@ export class Scd40 extends Document {
   sensor: Sensores | Types.ObjectId;
 }
 
-export const Scd40Schema = SchemaFactory.createForClass(Scd40);
+export const Bme680Schema = SchemaFactory.createForClass(Bme680);
