@@ -7,6 +7,7 @@ import {
   HttpStatus,
   Param,
   Post,
+  Query,
 } from '@nestjs/common';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 
@@ -44,5 +45,15 @@ export class Scd40Controller {
   @HttpCode(HttpStatus.OK)
   delete(@Param('id') id: string) {
     return this.scd40Service.remove(id);
+  }
+
+  @ApiOperation({ summary: 'eliminar un rango de documentos' })
+  @Delete()
+  @HttpCode(HttpStatus.OK)
+  deleteDataByDateRange(
+    @Query('startDate') startDate: Date,
+    @Query('endDate') endDate: Date,
+  ) {
+    return this.scd40Service.removeByRange(startDate, endDate);
   }
 }
