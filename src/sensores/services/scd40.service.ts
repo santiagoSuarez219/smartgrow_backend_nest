@@ -34,4 +34,8 @@ export class Scd40Service {
   remove(id: string) {
     return this.scd40Model.findByIdAndDelete(id).exec();
   }
+
+  removeAll() {
+    return this.scd40Model.deleteMany().exec();
+  }
 }

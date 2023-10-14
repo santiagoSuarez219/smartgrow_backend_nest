@@ -14,6 +14,9 @@ export class Scd40 extends Document {
   @Prop()
   humedad: number;
 
+  @Prop()
+  VPD: number;
+
   @Prop({ required: true })
   fecha: Date;
 

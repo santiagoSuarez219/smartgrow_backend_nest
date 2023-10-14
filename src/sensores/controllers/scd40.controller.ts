@@ -39,6 +39,13 @@ export class Scd40Controller {
     return this.scd40Service.create(payload);
   }
 
+  @ApiOperation({ summary: 'eliminar todos los documentos' })
+  @Delete()
+  @HttpCode(HttpStatus.OK)
+  deleteAll() {
+    return this.scd40Service.removeAll();
+  }
+
   @ApiOperation({ summary: 'eliminar un documento' })
   @Delete(':id')
   @HttpCode(HttpStatus.OK)

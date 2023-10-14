@@ -19,6 +19,10 @@ export class CreateDocumentScd40Dto {
   readonly altitud: number;
 
   @ApiProperty()
+  @IsNumber()
+  readonly VPD: number;
+
+  @ApiProperty()
   @IsNotEmpty()
   @IsMongoId()
   readonly sensor: string;
