@@ -4,6 +4,7 @@ import {
   IsMongoId,
   IsString,
   IsOptional,
+  IsDate,
 } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
@@ -38,4 +39,12 @@ export class FilterProductByDataDto {
   @IsOptional()
   @IsString()
   data: string;
+
+  @IsOptional()
+  @IsDate()
+  fecha_inicial: Date;
+
+  @IsOptional()
+  @IsDate()
+  fecha_final: Date;
 }

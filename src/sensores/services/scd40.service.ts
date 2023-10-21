@@ -15,9 +15,14 @@ export class Scd40Service {
   findAll(params?: FilterProductByDataDto) {
     if (params.hasOwnProperty('data')) {
       const filters: FilterQuery<Scd40> = {};
-      const { data } = params;
-      filters.sensor = data;
-      return this.scd40Model.find({}, `${data} fecha`).exec();
+      const { data, fecha_inicial, fecha_final } = params;
+      if (fecha_inicial && fecha_final) {
+        filters.fecha = {
+          $gte: fecha_inicial,
+          $lte: fecha_final,
+        };
+      }
+      return this.scd40Model.find(filters, `${data} fecha`).exec();
     }
     return this.scd40Model.find().populate('sensor').exec();
   }
