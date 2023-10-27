@@ -14,6 +14,12 @@ export class Bme680 extends Document {
   @Prop()
   altitud: number;
 
+  @Prop()
+  cov: number;
+
+  @Prop()
+  VPD: number;
+
   @Prop({ required: true })
   fecha: Date;
 

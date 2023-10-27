@@ -15,6 +15,14 @@ export class CreateDocumentBme680Dto {
   readonly altitud: number;
 
   @ApiProperty()
+  @IsNumber()
+  readonly cov:number;
+
+  @ApiProperty()
+  @IsNumber()
+  readonly VPD:number;
+
+  @ApiProperty()
   @IsNotEmpty()
   @IsMongoId()
   readonly sensor: string;
