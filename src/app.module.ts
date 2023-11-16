@@ -9,7 +9,6 @@ import { DatabaseModule } from './database/database.module';
 
 import { enviroments } from './enviroments';
 import { ConfigModule } from '@nestjs/config';
-import { SensoresController } from './controllers/sensores.controller';
 import config from './config';
 
 @Module({
@@ -25,7 +24,7 @@ import config from './config';
     WebsocketModule,
     DatabaseModule,
   ],
-  controllers: [AppController, SensoresController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}

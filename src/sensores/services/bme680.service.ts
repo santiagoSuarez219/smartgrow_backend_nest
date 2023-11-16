@@ -24,6 +24,7 @@ export class Bme680Service {
 
   create(data: CreateDocumentBme680Dto) {
     const date = new Date();
+    date.setHours(date.getHours() - 5)
     const newDocumentData = {
       ...data,
       fecha: date,

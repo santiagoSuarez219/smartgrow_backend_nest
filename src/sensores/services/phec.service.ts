@@ -23,6 +23,7 @@ export class PhecService {
 
   create(data: CreateDocumentPhEcDto) {
     const date = new Date();
+    date.setHours(date.getHours() - 5)
     const newDocumentData = {
       ...data,
       fecha: date,

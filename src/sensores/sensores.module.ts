@@ -16,7 +16,6 @@ import { Sensores, SensoresSchema } from './entities/sensores.entity';
 import { Bme680Controller } from './controllers/bme680.controller';
 import { Bme680Service } from './services/bme680.service';
 import { Bme680, Bme680Schema } from './entities/bme680.entity';
-import { ControllersController } from './controllers.controller';
 import { As7265xController } from './controllers/as7265x.controller';
 import { As7265xService } from './services/as7265x.service';
 
@@ -34,7 +33,6 @@ import { As7265xService } from './services/as7265x.service';
     PhecController,
     SensoresController,
     Bme680Controller,
-    ControllersController,
     As7265xController,
   ],
   providers: [Scd40Service, PhecService, SensoresService, Bme680Service, As7265xService],
