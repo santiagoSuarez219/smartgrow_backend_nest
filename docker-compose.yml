@@ -1,0 +1,37 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/app
+    depends_on:
+      - my-database
+    command: npm run start:dev
+  my-database:
+    image: mongo:4.4.4
+    environment:
+      - MONGO_INITDB_DATABASE=smartgrow
+      - MONGO_INITDB_ROOT_USERNAME=smartgrow
+      - MONGO_INITDB_ROOT_PASSWORD=smartgrow1234
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./mongo_data:/data/db
+  emqx:
+    user: root
+    image: "emqx:latest"
+    ports:
+        - "18083:18083"
+        - "1883:1883"
+        - "4369:4369"
+    volumes:
+        - ./data/emqx/data:/opt/emqx/data
+        - ./data/emqx/log:/opt/emqx/log
+    environment:
+        EMQX_LOADED_PLUGINS: emqx_auth_username emqx_auth_clientid
+        EMQX_ADMIN_USERNAME: admin
+        EMQX_ADMIN_PASSWORD: abcd1234
