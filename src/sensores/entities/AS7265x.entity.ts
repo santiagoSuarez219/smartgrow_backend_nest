@@ -6,58 +6,58 @@ import { Sensores } from '../entities/sensores.entity';
 @Schema()
 export class As7265x extends Document {
   @Prop()
-  410: number;
+  A: number;
 
   @Prop()
-  435: number;
+  B: number;
 
   @Prop()
-  460: number;
+  C: number;
 
   @Prop()
-  485: number;
+  D: number;
 
   @Prop()
-  510: number;
+  E: number;
 
   @Prop()
-  535: number;
+  F: number;
 
   @Prop()
-  560: number;
+  G: number;
 
   @Prop()
-  585: number;
+  H: number;
 
   @Prop()
-  610: number;
+  R: number;
 
   @Prop()
-  645: number;
+  I: number;
 
   @Prop()
-  680: number;
+  S: number;
 
   @Prop()
-  705: number;
+  J: number;
   
   @Prop()
-  730: number;
+  T: number;
 
   @Prop()
-  760: number;
+  U: number;
 
   @Prop()
-  810: number;
+  V: number;
 
   @Prop()
-  860: number;
+  W: number;
 
   @Prop()
-  900: number;
+  K: number;
 
   @Prop()
-  940: number;
+  L: number;
 
   @Prop({ required: true })
   fecha: Date;

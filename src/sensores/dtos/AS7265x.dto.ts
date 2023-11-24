@@ -1,78 +1,78 @@
 import { IsNotEmpty, IsNumber, IsMongoId } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
-export class CreateDocumentBme680Dto {
+export class CreateDocumentAs7265xDto {
   @ApiProperty()
   @IsNumber()
-  readonly 410: number;
+  readonly A: number;
 
   @ApiProperty()
   @IsNumber()
-  readonly 435: number;
+  readonly B: number;
 
   @ApiProperty()
   @IsNumber()
-  readonly 460: number;
+  readonly C: number;
 
   @ApiProperty()
   @IsNumber()
-  readonly 485:number;
+  readonly D:number;
 
   @ApiProperty()
   @IsNumber()
-  readonly 510:number;
+  readonly E:number;
 
   @ApiProperty()
   @IsNumber()
-  readonly 535:number;
+  readonly F:number;
 
   @ApiProperty()
   @IsNumber()
-  readonly 560:number;
+  readonly G:number;
 
   @ApiProperty()
   @IsNumber()
-  readonly 585:number;
+  readonly H:number;
 
   @ApiProperty()
   @IsNumber()
-  readonly 610:number;
+  readonly R:number;
 
   @ApiProperty()
   @IsNumber()
-  readonly 645:number;
+  readonly I:number;
 
   @ApiProperty()
   @IsNumber()
-  readonly 680:number;
+  readonly S:number;
 
   @ApiProperty()
   @IsNumber()
-  readonly 705:number;
+  readonly J:number;
 
   @ApiProperty()
   @IsNumber()
-  readonly 730:number;
+  readonly T:number;
 
   @ApiProperty()
   @IsNumber()
-  readonly 760:number;
+  readonly U:number;
   
   @ApiProperty()
   @IsNumber()
-  readonly 810:number;
+  readonly V:number;
   
   @ApiProperty()
   @IsNumber()
-  readonly 860:number;
+  readonly W:number;
   
   @ApiProperty()
   @IsNumber()
-  readonly 900:number;@ApiProperty()
+  readonly K:number;@ApiProperty()
   
   @ApiProperty()
   @IsNumber()
-  readonly 940:number;
+  readonly L:number;
   
   @IsNotEmpty()
   @IsMongoId()
