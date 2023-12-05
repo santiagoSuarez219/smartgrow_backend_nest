@@ -16,8 +16,10 @@ import { Sensores, SensoresSchema } from './entities/sensores.entity';
 import { Bme680Controller } from './controllers/bme680.controller';
 import { Bme680Service } from './services/bme680.service';
 import { Bme680, Bme680Schema } from './entities/bme680.entity';
+
 import { As7265xController } from './controllers/as7265x.controller';
 import { As7265xService } from './services/as7265x.service';
+import { AS7265xSchema, As7265x } from './entities/AS7265x.entity';
 
 @Module({
   imports: [
@@ -26,6 +28,7 @@ import { As7265xService } from './services/as7265x.service';
       { name: PhEc.name, schema: PhEcSchema },
       { name: Sensores.name, schema: SensoresSchema },
       { name: Bme680.name, schema: Bme680Schema },
+      { name: As7265x.name, schema: AS7265xSchema },
     ]),
   ],
   controllers: [
