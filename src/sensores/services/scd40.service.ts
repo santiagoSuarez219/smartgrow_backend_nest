@@ -1,7 +1,10 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { CreateDocumentScd40Dto } from '../dtos/scd40.dto';
+import { Model, FilterQuery } from 'mongoose';
+import {
+  CreateDocumentScd40Dto,
+  FilterProductByDataDto,
+} from '../dtos/scd40.dto';
 
 import { Scd40 } from '../entities/scd40.entity';
 
@@ -9,7 +12,18 @@ import { Scd40 } from '../entities/scd40.entity';
 export class Scd40Service {
   constructor(@InjectModel(Scd40.name) private scd40Model: Model<Scd40>) {}
 
-  findAll() {
+  findAll(params?: FilterProductByDataDto) {
+    if (params.hasOwnProperty('data')) {
+      const filters: FilterQuery<Scd40> = {};
+      const { data, fecha_inicial, fecha_final } = params;
+      if (fecha_inicial && fecha_final) {
+        filters.fecha = {
+          $gte: fecha_inicial,
+          $lte: fecha_final,
+        };
+      }
+      return this.scd40Model.find(filters, `${data} fecha`).exec();
+    }
     return this.scd40Model.find().populate('sensor').exec();
   }
 
