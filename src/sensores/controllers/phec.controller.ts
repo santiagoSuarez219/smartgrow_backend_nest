@@ -7,11 +7,12 @@ import {
   HttpStatus,
   Param,
   Post,
+  Query,
 } from '@nestjs/common';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 
 import { PhecService } from '../services/phec.service';
-import { CreateDocumentPhEcDto } from '../dtos/phec.dto';
+import { CreateDocumentPhEcDto, FilterDataDto } from '../dtos/phec.dto';
 
 @ApiTags('ph y ec')
 @Controller('phec')
@@ -21,8 +22,9 @@ export class PhecController {
   @ApiOperation({ summary: 'List of all data ph y ec' })
   @Get()
   @HttpCode(HttpStatus.OK)
-  getAll() {
-    return this.phecService.findAll();
+  getAll(@Query() params: FilterDataDto) {
+    console.log(params);
+    return this.phecService.findAll(params);
   }
 
   @ApiOperation({ summary: 'Get data ph y ec by id' })

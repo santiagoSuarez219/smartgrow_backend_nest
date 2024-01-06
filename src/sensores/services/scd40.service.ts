@@ -16,6 +16,9 @@ export class Scd40Service {
     if (params.hasOwnProperty('data')) {
       const filters: FilterQuery<Scd40> = {};
       const { data, fecha_inicial, fecha_final } = params;
+      filters.temperatura = { $gt: 0 };
+      filters.humedad = { $gt: 0 };
+      filters.co2 = { $gt: 0 };
       if (fecha_inicial && fecha_final) {
         filters.fecha = {
           $gte: fecha_inicial,
@@ -37,7 +40,7 @@ export class Scd40Service {
 
   create(data: CreateDocumentScd40Dto) {
     const date = new Date();
-    date.setHours(date.getHours() - 5)
+    date.setHours(date.getHours() - 5);
     const newDocumentData = {
       ...data,
       fecha: date,
