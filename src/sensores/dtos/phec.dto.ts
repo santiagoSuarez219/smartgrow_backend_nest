@@ -1,4 +1,10 @@
-import { IsNotEmpty, IsNumber, IsMongoId } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsNumber,
+  IsMongoId,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateDocumentPhEcDto {
@@ -21,4 +27,10 @@ export class CreateDocumentPhEcDto {
   @IsNotEmpty()
   @IsMongoId()
   readonly sensor: string;
+}
+
+export class FilterDataDto {
+  @IsOptional()
+  @IsString()
+  data: string;
 }

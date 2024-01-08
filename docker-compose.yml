@@ -31,7 +31,8 @@ services:
     ports:
         - "18083:18083"
         - "1883:1883"
-        - "4369:4369"
+        - "8083:8083"
+        - "8084:8084"
     volumes:
         - ./data/emqx/data:/opt/emqx/data
         - ./data/emqx/log:/opt/emqx/log

@@ -4,7 +4,6 @@ import { AppService } from './app.service';
 import { SensoresModule } from './sensores/sensores.module';
 import { ActuadoresModule } from './actuadores/actuadores.module';
 import { MqttModule } from './mqtt/mqtt.module';
-import { WebsocketModule } from './websocket/websocket.module';
 import { DatabaseModule } from './database/database.module';
 
 import { enviroments } from './enviroments';
@@ -21,7 +20,6 @@ import config from './config';
     SensoresModule,
     ActuadoresModule,
     MqttModule,
-    WebsocketModule,
     DatabaseModule,
   ],
   controllers: [AppController],

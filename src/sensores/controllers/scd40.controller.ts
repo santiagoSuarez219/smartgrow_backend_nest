@@ -7,11 +7,15 @@ import {
   HttpStatus,
   Param,
   Post,
+  Query,
 } from '@nestjs/common';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 
 import { Scd40Service } from '../services/scd40.service';
-import { CreateDocumentScd40Dto } from '../dtos/scd40.dto';
+import {
+  CreateDocumentScd40Dto,
+  FilterProductByDataDto,
+} from '../dtos/scd40.dto';
 
 @ApiTags('scd40')
 @Controller('scd40')
@@ -21,8 +25,8 @@ export class Scd40Controller {
   @ApiOperation({ summary: 'List of all data scd40' })
   @Get()
   @HttpCode(HttpStatus.OK)
-  getAll() {
-    return this.scd40Service.findAll();
+  getAll(@Query() params: FilterProductByDataDto) {
+    return this.scd40Service.findAll(params);
   }
 
   @ApiOperation({ summary: 'Get data scd40 by id' })
