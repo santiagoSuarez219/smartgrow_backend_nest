@@ -7,10 +7,14 @@ import {
 } from '../dtos/scd40.dto';
 
 import { Scd40 } from '../entities/scd40.entity';
+import { MqttService } from '../../mqtt/services/mqtt.service';
 
 @Injectable()
 export class Scd40Service {
-  constructor(@InjectModel(Scd40.name) private scd40Model: Model<Scd40>) {}
+  constructor(
+    @InjectModel(Scd40.name) private scd40Model: Model<Scd40>,
+    private mqttService: MqttService,
+  ) {}
 
   findAll(params?: FilterProductByDataDto) {
     if (params.hasOwnProperty('data')) {
@@ -50,6 +54,10 @@ export class Scd40Service {
       fecha: date,
     };
     const newDocument = new this.scd40Model(newDocumentData);
+    this.mqttService.publish(
+      'smartgrow/sensores/scd40',
+      JSON.stringify(newDocument),
+    );
     return newDocument.save();
   }
 
