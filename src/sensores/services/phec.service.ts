@@ -21,6 +21,10 @@ export class PhecService {
     return this.phEcModel.find().populate('sensor').exec();
   }
 
+  findLastData() {
+    return this.phEcModel.find().sort({ $natural: -1 }).limit(1);
+  }
+
   async findOne(id: string) {
     const data = await this.phEcModel.findById(id).exec();
     if (!data) {
