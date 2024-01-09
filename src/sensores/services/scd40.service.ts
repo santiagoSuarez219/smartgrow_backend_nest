@@ -30,6 +30,10 @@ export class Scd40Service {
     return this.scd40Model.find().populate('sensor').exec();
   }
 
+  findLastData() {
+    return this.scd40Model.find().sort({ $natural: -1 }).limit(1);
+  }
+
   async findOne(id: string) {
     const data = await this.scd40Model.findById(id).exec();
     if (!data) {

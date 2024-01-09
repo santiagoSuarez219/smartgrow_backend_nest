@@ -29,6 +29,13 @@ export class Scd40Controller {
     return this.scd40Service.findAll(params);
   }
 
+  @ApiOperation({ summary: 'Obtener el ultimo dato' })
+  @Get('/last_data')
+  @HttpCode(HttpStatus.OK)
+  getLastData() {
+    return this.scd40Service.findLastData();
+  }
+
   @ApiOperation({ summary: 'Get data scd40 by id' })
   @Get(':id')
   @HttpCode(HttpStatus.OK)

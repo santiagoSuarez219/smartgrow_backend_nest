@@ -27,6 +27,13 @@ export class PhecController {
     return this.phecService.findAll(params);
   }
 
+  @ApiOperation({ summary: 'Obtener el ultimo dato' })
+  @Get('/last_data')
+  @HttpCode(HttpStatus.OK)
+  getLastData() {
+    return this.phecService.findLastData();
+  }
+
   @ApiOperation({ summary: 'Get data ph y ec by id' })
   @Get(':id')
   @HttpCode(HttpStatus.OK)
