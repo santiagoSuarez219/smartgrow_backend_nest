@@ -23,10 +23,6 @@ export class CreateDocumentScd40Dto {
 
   @ApiProperty()
   @IsNumber()
-  readonly altitud: number;
-
-  @ApiProperty()
-  @IsNumber()
   readonly VPD: number;
 
   @ApiProperty()
